@@ -1,31 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import Spinner from '../layout/Spinner';
 class Clients extends Component {
     render() {
-        const clients = [{
-            id: '3233232',
-            firstName: 'Kevin',
-            lastName: 'Johnson',
-            email: 'kevin@gmail.com',
-            phone: '555-555-5555',
-            gender: 1
-        },
-            {
-                id: '32342232',
-                firstName: 'John',
-                lastName: 'Snow',
-                email: 'jsnow@gmail.com',
-                phone: '534-255-5455',
-                gender: 1
-            }];
-
+        const {clients} = this.props;
         if (clients) {
             return (
                 <Fragment>
                     <div className="row">
                         <div className="col-md-6">
-                            <h2>{' '}<i className="fa fa-users"></i> Clients {' '}</h2>
+                            <h2>{' '}<i className="fa fa-users" /> Clients {' '}</h2>
                         </div>
                         <div className="col-md-6"></div>
                     </div>
@@ -46,7 +34,7 @@ class Clients extends Component {
                                 <td>{client.gender?'Male':'Female'}</td>
                                 <td>
                                     <Link to={`/client/${client.id}`} className="btn btn-secondary btn-sm">
-                                        <i className="fa fa-arrow-circle-right"></i> Details
+                                        <i className="fa fa-arrow-circle-right" /> Details
                                     </Link>
                                 </td>
                             </tr>
@@ -56,9 +44,18 @@ class Clients extends Component {
                 </Fragment>
             )
         }else {
-            return <h1 > Loading... </h1>
+            return <h1 > <Spinner/> </h1>
         }
     }
 }
 
-export default Clients;
+Clients.propTypes = {
+    firestore: PropTypes.object.isRequired,
+    clients: PropTypes.array
+}
+export default compose(
+    firestoreConnect([{collection: 'clients'}]),
+    connect((state, props) => ({
+        clients: state.firestore.ordered.clients
+    }))
+)(Clients);
