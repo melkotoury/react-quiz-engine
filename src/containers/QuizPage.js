@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchDataWithRedux } from "../actions/index";
 import { bindActionCreators } from "redux";
+import Spinner from '../components/layout/Spinner';
 
 import StartPage from "./StartPage";
 import QuestionPage from "./QuestionPage";
@@ -22,7 +23,7 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-class App extends Component {
+class QuizPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -40,9 +41,9 @@ class App extends Component {
     } else if (this.props.categories.quizApp.currentRound > 0 && this.props.categories.quizApp.currentRound < 11){
       return <QuestionPage />;
     } else {
-      return <p>Loading...</p>
+      return <Spinner />;
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(QuizPage);

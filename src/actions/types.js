@@ -5,3 +5,5 @@ export const NEW_QUIZ = "new_quiz";
 export const FETCH_REQUEST = "fetch_request";
 export const FETCH_SUCCESS = "fetch_success";
 export const FETCH_ERROR = "fetch_error";
+export const NOTIFY_USER = 'NOTIFY_USER';
+export const ALLOW_REGISTRATION = 'ALLOW_REGISTRATION';

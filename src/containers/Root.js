@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import "../style/App.css";
 
-import App from "./App";
+import App from "./QuizPage";
 
 const Root = ({ store }) => {
   return (
