@@ -3,21 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  setAllowRegistration,
-  setDisableBalanceOnAdd,
-  setDisableBalanceOnEdit
+  setAllowRegistration
 } from '../../actions/settingsActions';
 
 class Settings extends Component {
-  disableBalanceOnAddChange = () => {
-    const { setDisableBalanceOnAdd } = this.props;
-    setDisableBalanceOnAdd();
-  };
-
-  disableBalanceOnEditChange = () => {
-    const { setDisableBalanceOnEdit } = this.props;
-    setDisableBalanceOnEdit();
-  };
 
   allowRegistrationChange = () => {
     const { setAllowRegistration } = this.props;
@@ -26,8 +15,6 @@ class Settings extends Component {
 
   render() {
     const {
-      disableBalanceOnAdd,
-      disableBalanceOnEdit,
       allowRegistration
     } = this.props.settings;
 
@@ -55,25 +42,7 @@ class Settings extends Component {
                 />
               </div>
 
-              <div className="form-group">
-                <label>Disable Balance On Add</label>{' '}
-                <input
-                  type="checkbox"
-                  name="disableBalanceOnAdd"
-                  checked={!!disableBalanceOnAdd}
-                  onChange={this.disableBalanceOnAddChange}
-                />
-              </div>
 
-              <div className="form-group">
-                <label>Disable Balance On Edit</label>{' '}
-                <input
-                  type="checkbox"
-                  name="disableBalanceOnEdit"
-                  checked={!!disableBalanceOnEdit}
-                  onChange={this.disableBalanceOnEditChange}
-                />
-              </div>
             </form>
           </div>
         </div>
@@ -84,8 +53,6 @@ class Settings extends Component {
 
 Settings.propTypes = {
   settings: PropTypes.object.isRequired,
-  setDisableBalanceOnAdd: PropTypes.func.isRequired,
-  setDisableBalanceOnEdit: PropTypes.func.isRequired,
   setAllowRegistration: PropTypes.func.isRequired
 };
 
@@ -94,5 +61,5 @@ export default connect(
     auth: state.firebase.auth,
     settings: state.settings
   }),
-  { setAllowRegistration, setDisableBalanceOnAdd, setDisableBalanceOnEdit }
+  { setAllowRegistration }
 )(Settings);
