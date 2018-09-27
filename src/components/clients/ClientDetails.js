@@ -77,7 +77,7 @@ class ClientDetails extends Component {
           <div className="row">
             <div className="col-md-6">
               <Link to="/" className="btn btn-link">
-                <i className="fas fa-arrow-circle-left" /> Back To Dashboard
+                <i className="fa fa-arrow-circle-left" /> Back To Dashboard
               </Link>
             </div>
             <div className="col-md-6">
@@ -103,32 +103,6 @@ class ClientDetails extends Component {
                     Client ID:{' '}
                     <span className="text-secondary">{client.id}</span>
                   </h4>
-                </div>
-                <div className="col-md-4 col-sm-6">
-                  <h3 className="pull-right">
-                    Balance:{' '}
-                    <span
-                      className={classnames({
-                        'text-danger': client.balance > 0,
-                        'text-success': client.balance === 0
-                      })}
-                    >
-                      ${parseFloat(client.balance).toFixed(2)}
-                    </span>{' '}
-                    <small>
-                      <a
-                        href="#!"
-                        onClick={() =>
-                          this.setState({
-                            showBalanceUpdate: !this.state.showBalanceUpdate
-                          })
-                        }
-                      >
-                        <i className="fa fa-pencil-alt" />
-                      </a>
-                    </small>
-                  </h3>
-                  {balanceForm}
                 </div>
               </div>
 
