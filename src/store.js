@@ -8,12 +8,12 @@ import notifyReducer from './reducers/notifyReducer';
 import settingsReducer from './reducers/settingsReducer';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAj2cQpepAuQjR_BzjiXikbV2zACUF5vsY',
-  authDomain: 'reactclientpanel-61f9d.firebaseapp.com',
-  databaseURL: 'https://reactclientpanel-61f9d.firebaseio.com',
-  projectId: 'reactclientpanel-61f9d',
-  storageBucket: 'reactclientpanel-61f9d.appspot.com',
-  messagingSenderId: '485531386544'
+  apiKey: "AIzaSyDsqWOf3XktoHBB0uN1jH4zGxkQh5w9MRk",
+  authDomain: "react-quiz-engine.firebaseapp.com",
+  databaseURL: "https://react-quiz-engine.firebaseio.com",
+  projectId: "react-quiz-engine",
+  storageBucket: "react-quiz-engine.appspot.com",
+  messagingSenderId: "22057197714"
 };
 
 // react-redux-firebase config
